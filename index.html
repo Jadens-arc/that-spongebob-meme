@@ -56,6 +56,22 @@
 <script>
   const input = document.getElementById('input');
   const output = document.getElementById('output');
+
+  input.addEventListener('input', function() {
+    let oldText = input.value;
+    let newText = '';
+    
+    for (let i = 0; i < oldText.length; i++) {
+      let oldChar = oldText.charAt(i).toLowerCase();
+      if (Math.random() > 0.6) {
+        newText += oldChar.toUpperCase();
+      } else {
+        newText += oldChar;
+      }
+    }
+    output.value = newText
+  })
+
 </script>
 
 </html>

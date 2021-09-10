@@ -1,126 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="https://raw.githubusercontent.com/Jadens-arc/that-spongebob-meme/main/assets/fav.ico"
+    />
+    <title>That Spongebob Meme</title>
+    <meta name="description" content="geNerATe teXt just LIke thIS WIth EAse" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/jpg" href="https://raw.githubusercontent.com/Jadens-arc/that-spongebob-meme/main/assets/fav.ico"/>
-  <title>That Spongebob Meme</title>
-  <meta name="description" content="geNerATe teXt just LIke thIS WIth EAse">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
+      body {
+        background-image: linear-gradient(
+          145deg,
+          rgb(250, 175, 114),
+          rgb(182, 88, 11)
+        );
+        min-height: 100vh;
+        font-family: sans-serif;
+      }
 
-    body {
-      background-image: linear-gradient(145deg, rgb(250, 175, 114), rgb(182, 88, 11));
-      min-height: 100vh;
-      font-family: sans-serif;
-    }
-
-    .content {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    textarea {
-      font-size: 4rem;
-      width: 100%;
-      resize: none;
-      border-radius: 7px;
-      outline: none;
-      border: none;
-      padding: 5px;
-      margin: 5px 0;
-      opacity: 0.55;
-      background-color: white;
-    }
-
-    hr {
-      width: 100%;
-      height: 4px;
-      background-color: white;
-      outline: none;
-      border: none;
-      border-radius: 7px;
-      opacity: 0.3;
-      margin: 10px;
-    }
-
-    button {
-      width: 100%;
-      margin: 5px 0;
-      padding: 5px;
-      border: none;
-      outline: none;
-      border-radius: 7px;
-      opacity: 0.7;
-      background-color: white;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-
-    button:hover {
-      transform: scale(1.02);
-    }
-
-    button:active {
-      transform: scale(1);
-    }
-
-    @media screen and (max-width: 800px) {
       .content {
-        width: 80%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation: fadeSlideUp 1.5s ease forwards;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="content">
-    <textarea id="input" aria-label="your text" type="text" rows="3" placeholder="Type your text here..."></textarea>
-    <hr>
-    <textarea id="output" aria-label="output" type="text" rows="3" disabled placeholder="TyPe your text hERe... "></textarea>
-    <button aria-label="copy to clipboard" id="copy">Copy to Clipboard</button>
-  </div>
-</body>
-
-<script>
-  const input = document.getElementById('input');
-  const output = document.getElementById('output');
-
-  input.addEventListener('input', e => {
-    let oldText = input.value;
-    let newText = '';
-    
-    for (let i = 0; i < oldText.length; i++) {
-      let oldChar = oldText.charAt(i).toLowerCase();
-      if (Math.random() > 0.6) {
-        newText += oldChar.toUpperCase();
-      } else {
-        newText += oldChar;
+      textarea {
+        font-size: 4rem;
+        width: 100%;
+        resize: none;
+        border-radius: 7px;
+        outline: none;
+        border: none;
+        padding: 5px;
+        margin: 5px 0;
+        opacity: 0.55;
+        background-color: white;
       }
-    }
-    output.value = newText
-  })
 
+      hr {
+        width: 100%;
+        height: 4px;
+        background-color: white;
+        outline: none;
+        border: none;
+        border-radius: 7px;
+        opacity: 0.3;
+        margin: 10px;
+      }
 
-  const copyBtn = document.getElementById('copy');
-  copyBtn.addEventListener('click', e => {
-    output.disabled = false;
-    output.select();
-    document.execCommand("copy");
-    output.disabled = true;
-  }); 
+      button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 5px;
+        border: none;
+        outline: none;
+        border-radius: 7px;
+        opacity: 0.7;
+        background-color: white;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+      }
 
-</script>
+      button:hover {
+        transform: scale(1.02);
+      }
 
+      button:active {
+        transform: scale(1);
+      }
+
+      @keyframes fadeSlideUp {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -25%);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        .content {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <textarea
+        id="input"
+        aria-label="your text"
+        type="text"
+        rows="3"
+        placeholder="Type your text here..."
+      ></textarea>
+      <hr />
+      <textarea
+        id="output"
+        aria-label="output"
+        type="text"
+        rows="3"
+        disabled
+        placeholder="TyPe your text hERe... "
+      ></textarea>
+      <button aria-label="copy to clipboard" id="copy">
+        Copy to Clipboard
+      </button>
+    </div>
+  </body>
+
+  <script>
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    input.addEventListener("input", (e) => {
+      let oldText = input.value;
+      let newText = "";
+
+      for (let i = 0; i < oldText.length; i++) {
+        let oldChar = oldText.charAt(i).toLowerCase();
+        if (Math.random() > 0.6) {
+          newText += oldChar.toUpperCase();
+        } else {
+          newText += oldChar;
+        }
+      }
+      output.value = newText;
+    });
+
+    const copyBtn = document.getElementById("copy");
+    copyBtn.addEventListener("click", (e) => {
+      output.disabled = false;
+      output.select();
+      document.execCommand("copy");
+      output.disabled = true;
+    });
+  </script>
 </html>
